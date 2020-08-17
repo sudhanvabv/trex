@@ -1,5 +1,6 @@
 var trex, trex_running, trex_collided, gameover, gameoverImage;
 var ground, invisibleGround, groundImage, restart, restartImage;
+var jumpsound, diesound, checkpointsound
 
 var PLAY = 1;
 var END = 0;
@@ -17,6 +18,7 @@ function preload(){
   trex_collided = loadImage("trex_collided.png");
   gameoverImage = loadImage("gameOver.png");
   restartImage = loadImage("restart.png")
+  jumpsound = loadSound("jump.mp3");
   
   groundImage = loadImage("ground2.png");
   
@@ -69,6 +71,7 @@ function draw() {
        score = score + Math.round(getFrameRate()/60);
      if(keyDown("space")) {
     trex.velocityY = -10;
+      jumpsound.play();
   }
   
   trex.velocityY = trex.velocityY + 0.8
